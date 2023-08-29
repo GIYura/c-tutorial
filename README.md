@@ -1,4 +1,4 @@
 #### Description
 
-##################################################################### Includes C programming language tutorial.
+###### Includes C programming language tutorial.
 
