@@ -1,6 +1,6 @@
 ### Description
 
-C starndards:
+C standards:
 
 - K&R (1978);
 - ANSI C (1989/1990);
