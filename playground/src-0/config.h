@@ -24,8 +24,8 @@
 #define CASE_21 0
 #define CASE_22 0
 #define CASE_23 0
-#define CASE_24 1
-#define CASE_25 0
+#define CASE_24 0
+#define CASE_25 1
 #define CASE_26 0
 #define CASE_27 0
 #define CASE_28 0

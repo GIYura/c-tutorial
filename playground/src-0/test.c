@@ -449,7 +449,78 @@ it is not allowed, it is not lvalue.
     printf("%d",i);
 
 #elif CASE_24
+/*
+Below program crashes if we will pass "freeze" and works well if we enter "zombie". Why?
+NOTE:
+when 'freeze' passed pointer ptr shifted until 'z' and on attempt to call free, the 
+program crashed.
+when 'zombie' passed there is no shift of the pointer.
+*/
+    printf("========= CASE 24 ==========\n");
+    char *ptr = (char*)malloc(10);
+
+    if (NULL == ptr)
+    {
+        printf("\n Malloc failed \n");
+        return -1;
+    }
+    else if (argc == 1)
+    {
+        printf("\n Usage  \n");
+    }
+    else
+    {
+        memset(ptr, 0, 10);
+
+        strncpy(ptr, argv[1], 9);
+
+        while (*ptr != 'z')
+        {
+            if (*ptr == '\0')
+                break;
+            else
+                ptr++;
+        }
+
+        if (*ptr == 'z')
+        {
+            printf("\n String contains 'z'\n");
+            // Do some more processing
+        }
+
+       free(ptr);
+    }
 #elif CASE_25
+/*
+Q. Following is the code for very basic password protection. Can you break it without knowing the password?
+*/
+    printf("========= CASE 25 ==========\n");
+    int flag = 0;
+    char passwd[10];
+
+    memset(passwd, 0, sizeof(passwd));
+   
+    if (argc < 2)
+    {
+        printf("Enter password\n");
+        return -1;
+    }
+
+    strcpy(passwd, argv[1]);
+
+    if(0 == strcmp("SuperGeek", passwd))
+    {
+        flag = 1;
+    }
+
+    if(flag)
+    {
+        printf("\n Password cracked \n");
+    }
+    else
+    {
+        printf("\n Incorrect passwd \n");
+    }
 #elif CASE_26
 #elif CASE_27
 #elif CASE_28
