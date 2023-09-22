@@ -1,6 +1,6 @@
 CC = gcc
 RM = rm -rf
-CFLAGS = -std=c99 -c -g -O0 -MD -Wall
+CFLAGS = -std=c99 -c -g -O0 -MD -Wall -pedantic -save-temps
 LDFLAGS = 
 SRC = $(wildcard *.c)
 OBJ = $(addsuffix .o, $(basename $(SRC)))
@@ -18,6 +18,6 @@ $(TARGET): $(OBJ)
 include $(wildcard *.d)
 
 clean:
-	@$(RM) *.o *.d
+	@$(RM) *.o *.d *.out *.s *.i
 	@$(RM) $(TARGET)
 	@echo 'Cleaning ... Done!'
