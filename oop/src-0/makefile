@@ -1,6 +1,8 @@
 CC = gcc
 RM = rm -rf
-CFLAGS = -std=c99 -c -g -O0 -MD -Wall -pedantic -save-temps
+STANDARD = -std=c99
+OPTIMIZATION = -O0
+CFLAGS = $(STANDARD) -c -g $(OPTIMIZATION) -MD -Wall -pedantic -save-temps
 LDFLAGS = 
 SRC = $(wildcard *.c)
 OBJ = $(addsuffix .o, $(basename $(SRC)))
