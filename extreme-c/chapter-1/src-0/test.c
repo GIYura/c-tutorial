@@ -9,7 +9,7 @@ int main (int argc, char* argv[])
 
     int c = MAX(a, b);
     
-    printf("%d\n", c);
+    printf("MAX value %d among %d and %d\n", c, a, b);
 
     return 0;
 }
