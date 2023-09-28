@@ -17,35 +17,35 @@ struct car_t* CarCreate(void);
 @in: brand
 @out: none
 */
-void CarInit(struct car_t* car, const char* const brand);
+void CarInit(struct car_t* const car, const char* const brand);
 
 /*
 @brief: De init car
 @in: pointer to car_t
 @out: none
 */
-void CarDeinit(struct car_t* car);
+void CarDeinit(struct car_t* const car);
 
 /*
 @brief: Car start
 @in: pointer to car_t
 @out: none
 */
-void CarStart(struct car_t* car);
+void CarStart(struct car_t* const car);
 
 /*
 @brief: Car stop
 @in: pointer to car_t
 @out: none
 */
-void CarStop(struct car_t* car);
+void CarStop(struct car_t* const car);
 
 /*
 @brief: Get engine temperature
 @in: pointer to car_t
 @out: temperature value
 */
-float CarGetEngineTemperature(struct car_t* car);
+float CarGetEngineTemperature(struct car_t* const car);
 
 #endif /* CAR_H */
 

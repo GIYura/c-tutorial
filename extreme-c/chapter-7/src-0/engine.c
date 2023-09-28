@@ -20,27 +20,27 @@ engine_t* EngineCreate(void)
     return (engine_t*)malloc(sizeof(engine_t));
 }
 
-void EngineInit(engine_t* engine)
+void EngineInit(engine_t* const engine)
 {
     engine->state = OFF;
     engine->temperature = DEFAULT_ENGINE_TEMPERATURE;
 }
 
-void EngineDeinit(engine_t* engine)
+void EngineDeinit(engine_t* const engine)
 {
     /* nothing to do */
 }
 
-void EngineTurnOn(engine_t* engine)
+void EngineTurnOn(engine_t* const engine)
 {
     if (engine->state == ON)
         return;
 
     engine->state = ON;
-    engine->temperature = 90.555;
+    engine->temperature = 90.55;
 }
 
-void EngineTurnOff(engine_t* engine)
+void EngineTurnOff(engine_t* const engine)
 {
     if (engine->state == OFF)
         return;
@@ -49,7 +49,7 @@ void EngineTurnOff(engine_t* engine)
     engine->temperature = DEFAULT_ENGINE_TEMPERATURE;
 }
 
-float EngineGetTemperature(engine_t* engine)
+float EngineGetTemperature(engine_t* const engine)
 {
     return engine->temperature;
 }

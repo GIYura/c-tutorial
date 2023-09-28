@@ -16,7 +16,7 @@ car_t* CarCreate(void)
     return (car_t*)malloc(sizeof(car_t));
 }
 
-void CarInit(car_t* car, const char* const brand)
+void CarInit(car_t* const car, const char* const brand)
 {
     car->engine = EngineCreate();
     EngineInit(car->engine);
@@ -25,23 +25,23 @@ void CarInit(car_t* car, const char* const brand)
     printf("%s initialized\n", brand);
 }
 
-void CarDeinit(car_t* car)
+void CarDeinit(car_t* const car)
 {
     EngineDeinit(car->engine);
     free(car->engine);
 }
 
-void CarStart(car_t* car)
+void CarStart(car_t* const car)
 {
     EngineTurnOn(car->engine);
 }
 
-void CarStop(car_t* car)
+void CarStop(car_t* const car)
 {
     EngineTurnOff(car->engine);
 }
 
-float CarGetEngineTemperature(car_t* car)
+float CarGetEngineTemperature(car_t* const car)
 {
     return EngineGetTemperature(car->engine);
 }
