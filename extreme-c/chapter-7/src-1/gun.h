@@ -19,31 +19,31 @@ struct gun_t* GunCreate(void);
 @in: number bullets
 @out: none
 */
-void GunInit(struct gun_t* gun, int bullets);
+void GunInit(struct gun_t* const gun, int bullets);
 /*
 @brief: Deinit gun
 @in: struct gun_t*
 @out: none
 */
-void GunDeinit(struct gun_t* gun);
+void GunDeinit(struct gun_t* const gun);
 /*
 @brief: Trigger gun
 @in: struct gun_t*
 @out: none
 */
-void GunTrigger(struct gun_t* gun);
+void GunTrigger(struct gun_t* const gun);
 /*
 @brief: Refill gun
 @in: struct gun_t*
 @out: none
 */
-void GunRefill(struct gun_t* gun);
+void GunRefill(struct gun_t* const gun);
 /*
 @brief: Check whether the gun is full or not
 @in: struct gun_t*
 @out: true - there are some bullets in the gun; false - otherwise
 */
-bool GunHasBullets(struct gun_t* gun);
+bool GunHasBullets(struct gun_t* const gun);
 
 #endif /* GUN_H */
 

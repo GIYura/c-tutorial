@@ -18,14 +18,14 @@ struct player_t* PlayerCreate(void);
 @in: char* - player name
 @out: none
 */
-void PlayerInit(struct player_t* player, const char* const name);
+void PlayerInit(struct player_t* const player, const char* const name);
 
 /*
 @brief: Deinitialization of the player
 @in: struct player_t*
 @out: none
 */
-void PlayerDeinit(struct player_t* player);
+void PlayerDeinit(struct player_t* const player);
 
 /*
 @brief: Force player to pick up the gun
@@ -33,21 +33,21 @@ void PlayerDeinit(struct player_t* player);
 @out: struct gun_t*
 @out: none
 */
-void PlayerPickGun(struct player_t* player, struct gun_t* gun);
+void PlayerPickGun(struct player_t* const player, struct gun_t* gun);
 
 /*
 @brief: Force player to shoot
 @in: struct player_t*
 @out: none
 */
-void PlayerShoot(struct player_t* player);
+void PlayerShoot(struct player_t* const player);
 
 /*
 @brief: Force player to drpo the gun
 @in: struct player_t*
 @out: none
 */
-void PlayerDropGun(struct player_t* player);
+void PlayerDropGun(struct player_t* const player);
 
 #endif /* PLAYER_H */
 

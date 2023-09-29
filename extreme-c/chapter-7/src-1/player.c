@@ -24,24 +24,24 @@ void PlayerInit(player_t* player, const char* const name)
     printf("Player initialized\n");
 }
 
-void PlayerDeinit(player_t* player)
+void PlayerDeinit(player_t* const player)
 {
     free(player->name);
 }
 
-void PlayerPickGun(player_t* player, struct gun_t* gun)
+void PlayerPickGun(player_t* const player, struct gun_t* gun)
 {
     player->gun = gun;
     printf("Player picked up the gun\n");
 }
 
-void PlayerShoot(player_t* player)
+void PlayerShoot(player_t* const player)
 {
     GunTrigger(player->gun);
     printf("Player trigger the gun\n");
 }
 
-void PlayerDropGun(player_t* player)
+void PlayerDropGun(player_t* const player)
 {
     player->gun = NULL;
     printf("Player dropped the gun\n");
