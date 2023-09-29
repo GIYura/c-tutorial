@@ -26,6 +26,8 @@
 
 ##### Композиция (src-0)
 
+![Composition](https://github.com/GIYura/c-tutorial/blob/main/extreme-c/chapter-7/composition.png)
+
 Отношение «композиция» между двумя объектами означает, что один из них 
 обладает другим. Иными словами, один объект состоит из другого.
 
