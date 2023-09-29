@@ -43,7 +43,7 @@
 
 ##### Агрегация (src-1)
 
-![Aggregation](https://github.com/GIYura/c-tutorial/blob/main/extreme-c/chapter-7/aggreration.png)
+![Aggregation](https://github.com/GIYura/c-tutorial/blob/main/extreme-c/chapter-7/aggregation.png)
 
 В агрегации тоже применяется контейнер, который содержит другой объект.
 Основное отличие в том, что время жизни контейнера никак не связано с временем
