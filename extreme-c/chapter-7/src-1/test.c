@@ -12,6 +12,7 @@ int main(int argc, char* argv[])
     struct player_t* m_player = PlayerCreate();
     PlayerInit(m_player, "John");
 
+    /* aggregation started */
     PlayerPickGun(m_player, m_gun);
 
     while (GunHasBullets(m_gun))
@@ -19,6 +20,7 @@ int main(int argc, char* argv[])
         PlayerShoot(m_player);
     }
 
+    /* aggregation stopped */
     PlayerDropGun(m_player);
 
     PlayerDeinit(m_player);
