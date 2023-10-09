@@ -8,6 +8,12 @@ NOTE:
 должны остановиться перед выражением pthread_mutex_lock(&m_mutex) и подождать,
 пока мьютекс не будет разблокирован снова.
 Поток, ожидающий разблокирования мьютекса, по умолчанию входит в спящий режим.
+
+Когда происходит возврат из pthread_mute_lock, мьютекс запирается, а вызывающий поток
+становится его владельцем.
+
+Для раблокировки мьютекса используется функция pthread_mutex_unlock. При этом мьютекс должен 
+быть закрыт, а вызывающий поток должен быть владельцем мьютекса, то есть тем, кто его запирал.
 */
 
 /* Объект мьютекса для синхронизации доступа
@@ -20,14 +26,24 @@ void* ThreadBody_1(void* context)
     int* sharedVar = (int*)context;
 
     /* Критический участок */
-    pthread_mutex_lock(&m_mutex);
+    int ret = pthread_mutex_lock(&m_mutex);
+    if (ret)
+    {
+        printf("Can't lock mutex\n");
+        return NULL;
+    }
 
     /* Инкрементируем разделяемую переменную на 1, выполняя запись
     непосредственно по ее адресу в памяти */
     (*sharedVar)++;
-    printf("%d\n", *sharedVar);
+    printf("Thread 1 output: %d\n", *sharedVar);
 
-    pthread_mutex_unlock(&m_mutex);
+    ret = pthread_mutex_unlock(&m_mutex);
+    if (ret)
+    {
+        printf("Can't unlock mutex\n");
+        return NULL;
+    }
 
     return NULL;
 }
@@ -38,14 +54,24 @@ void* ThreadBody_2(void* context)
     int* sharedVar = (int*)context;
     
     /* Критический участок */
-    pthread_mutex_lock(&m_mutex);
+    int ret = pthread_mutex_lock(&m_mutex);
+    if (ret)
+    {
+        printf("Can't lock mutex\n");
+        return NULL;
+    }
 
     /* Инкрементируем разделяемую переменную на 2, выполняя запись
     непосредственно по ее адресу в памяти */
     *sharedVar += 2;
-    printf("%d\n", *sharedVar);
+    printf("Thread 2 output: %d\n", *sharedVar);
 
-    pthread_mutex_unlock(&m_mutex);
+    ret = pthread_mutex_unlock(&m_mutex);
+    if (ret)
+    {
+        printf("Can't unlock mutex\n");
+        return NULL;
+    }
 
     return NULL;
 }
@@ -73,7 +99,7 @@ int main(int argc, char* argv[])
     
     if (result2 || result3)
     {
-        printf("The threads could not be created.\n");
+        printf("Can't creat threads\n");
         exit(2);
     }
 
@@ -83,7 +109,7 @@ int main(int argc, char* argv[])
 
     if (result2 || result3)
     {
-        printf("The threads could not be joined.\n");
+        printf("Can't join threads\n");
         exit(3);
     }
 
