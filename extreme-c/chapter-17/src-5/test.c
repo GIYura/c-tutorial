@@ -19,21 +19,21 @@ static int32_t* m_counter = NULL;
 
 static void SharedResourceOpen(void)
 {
-    /* Открываем объект в разделяемой памяти */
-    m_sharedFd = shm_open("/shm0", O_CREAT | O_RDWR, 0600);
+    /* Открываем файл */
+    m_sharedFd = open("data.bin", O_CREAT | O_RDWR, 0600);
     if (m_sharedFd < 0)
     {
-        fprintf(stderr, "ERROR: Failed to create shared memory: %s\n", strerror(errno));
+        fprintf(stderr, "ERROR: Failed to create the file: %s\n", strerror(errno));
         exit(1);
     }
-    fprintf(stdout, "Shared memory is created with fd: %d\n", m_sharedFd);
+    fprintf(stdout, "File is created and opened with fd: %d\n", m_sharedFd);
 }
 
 static void SharedResourceClose(void)
 {
-    if (shm_unlink("/shm0") < 0)
+    if (remove("data.bin") < 0)
     {
-        fprintf(stderr, "ERROR: Unlinking shared memory failed: %s\n", strerror(errno));
+        fprintf(stderr, "ERROR: Removing the file failed: %s\n", strerror(errno));
         exit(1);
     }
 }
@@ -106,7 +106,7 @@ int main(int argc, char* argv[])
         fprintf(stderr, "ERROR: Closing shared memory fd filed: %s\n", strerror(errno));
         exit(1);
     }
-    
+
     /* Только родительскому процессу нужно закрывать разделяемый ресурс */
     if (pid)
     {
