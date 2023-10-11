@@ -23,7 +23,7 @@ void MatrixPrint2D(int* matrix, int rows, int columns)
         {
             printf("%d ", *(matrix + i * columns + j));
         }
-    printf("\n");
+        printf("\n");
     }
 }
 
@@ -46,8 +46,8 @@ int MatrixFriendlySum(int* matrix, int rows, int columns)
         {
             sum += *(matrix + i * columns + j);
         }
-  }
-  return sum;
+    }
+    return sum;
 }
 
 int MatrixNoneFriendlySum(int* matrix, int rows, int columns)
@@ -59,7 +59,7 @@ int MatrixNoneFriendlySum(int* matrix, int rows, int columns)
         {
             sum += *(matrix + i * columns + j);
         }
-  }
-  return sum;
+    }
+    return sum;
 }
 
