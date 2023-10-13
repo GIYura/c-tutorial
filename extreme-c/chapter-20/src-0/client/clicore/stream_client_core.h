@@ -3,4 +3,5 @@
 
 void stream_client_loop(int conn_sd);
 
-#endif
+#endif /* STREAM_CLIENT_CORE_H */
+

@@ -3,4 +3,5 @@
 
 void accept_forever(int server_sd);
 
-#endif
+#endif /* STREAM_SERVER_CORE_H */
+

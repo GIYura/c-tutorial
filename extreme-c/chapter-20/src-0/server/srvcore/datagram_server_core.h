@@ -3,4 +3,5 @@
 
 void serve_forever(int server_sd);
 
-#endif
+#endif /* DATAGRAM_SERVER_CORE_H */
+

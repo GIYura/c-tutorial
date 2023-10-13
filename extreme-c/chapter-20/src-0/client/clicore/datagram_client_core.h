@@ -3,4 +3,5 @@
 
 void datagram_client_loop(int conn_sd);
 
-#endif
+#endif /* DATAGRAM_CLIENT_CORE_H */
+

@@ -25,8 +25,8 @@ struct calc_proto_req_t
     double operand2;
 };
 
-method_t str_to_method(const char*);
-const char* method_to_str(method_t);
+method_t str_to_method(const char* str);
+const char* method_to_str(method_t method);
 
 #endif /* CALC_PROTO_REQ_H */
 
