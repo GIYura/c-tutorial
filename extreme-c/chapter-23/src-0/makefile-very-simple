@@ -1,0 +1,12 @@
+build:
+	mkdir -p build
+	gcc -c math/add.c -o build/add.o
+	gcc -c math/mul.c -o build/mul.o
+	gcc -c math/sub.c -o build/sub.o
+	gcc -c math/div.c -o build/div.o
+	ar rcs build/libcalc.a build/add.o build/mul.o build/sub.o build/div.o
+	gcc -c -Imath exec/test.c -o build/test.o
+	gcc -Lbuild build/test.o -lcalc -o build/test.out
+clean:
+	rm -rfv build
+

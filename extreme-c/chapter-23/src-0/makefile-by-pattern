@@ -1,0 +1,27 @@
+BUILD_DIR = out
+OBJ = ${BUILD_DIR}/math/add.o \
+${BUILD_DIR}/math/sub.o \
+${BUILD_DIR}/math/mul.o \
+${BUILD_DIR}/math/div.o \
+${BUILD_DIR}/exec/test.o
+CC = gcc
+HEADER_DIRS = -Imath
+LIBCALCNAME = calc
+LIBCALC = ${BUILD_DIR}/lib${LIBCALCNAME}.a
+EXEC = ${BUILD_DIR}/test.out
+build: prereq ${BUILD_DIR}/exec/test.o ${LIBCALC}
+	${CC} -L${BUILD_DIR} ${BUILD_DIR}/exec/test.o -l${LIBCALCNAME} -o ${EXEC}
+prereq:
+	mkdir -p ${BUILD_DIR}
+	mkdir -p ${BUILD_DIR}/math
+	mkdir -p ${BUILD_DIR}/exec
+${LIBCALC}: ${OBJ}
+	ar rcs ${LIBCALC} ${OBJ}
+${BUILD_DIR}/math/%.o: math/%.c
+	${CC} -c ${HEADER_DIRS} $< -o $@
+${BUILD_DIR}/exec/%.o: exec/%.c
+	${CC} -c ${HEADER_DIRS} $< -o $@
+
+clean: ${BUILD_DIR}
+	rm -rf ${BUILD_DIR}
+

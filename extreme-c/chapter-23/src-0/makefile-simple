@@ -1,0 +1,29 @@
+CC = gcc
+
+build: prereq out/test.o out/libcalc.a
+	${CC} -Lout out/test.o -lcalc -o out/test.out
+
+prereq:
+	mkdir -p out
+
+out/libcalc.a: out/add.o out/mul.o out/sub.o out/div.o
+	ar rcs out/libcalc.a out/add.o out/mul.o out/sub.o out/div.o
+
+out/test.o: exec/test.c math/calc.h
+	${CC} -c -Imath exec/test.c -o out/test.o
+
+out/add.o: math/add.c math/calc.h
+	${CC} -c math/add.c -o out/add.o
+
+out/sub.o: math/sub.c math/calc.h
+	${CC} -c math/sub.c -o out/sub.o
+
+out/mul.o: math/mul.c math/calc.h
+	${CC} -c math/mul.c -o out/mul.o
+
+out/div.o: math/div.c math/calc.h
+	${CC} -c math/div.c -o out/div.o
+
+clean: out
+	rm -rf out
+
